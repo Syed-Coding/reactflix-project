@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MovieCard from "./MovieCard";
 import Wrapper from "./Wrapper";
 // import { popularMovies } from "../Utils/data"; // local data dummy
@@ -6,50 +6,58 @@ import Pagination from "./Pagination";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import Slider from "./Slider";
-import axios from "axios";
+import { useFetch } from "../Hooks/useFetch";
 function Main() {
-  const [popMovies, setPopMovies] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
-  console.log("popular movies is", popMovies);
+  const [data, loading, error] = useFetch("movie/popular", { page: page }); // custom hooks for reusing and destructing the return value
+  // console.log("data in main", data);
+  const { results, total_pages } = data;
+  console.log("results", results);
+  console.log("totalpages", total_pages);
+
+  // const [popMovies, setPopMovies] = useState([]);
+  // const [totalPages, setTotalPages] = useState(null);
+  // console.log("popular movies is", popMovies);
   // console.log("toalpages is ", totalPages);
   // console.log("page no  ", page);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const api_url = "https://api.themoviedb.org/3/movie/popular";
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+  // const api_url = "https://api.themoviedb.org/3/movie/popular";
 
-  // console.log(setPopMovies);
-  useEffect(() => {
-    // console.log("inisde use effect");
+  // // console.log(setPopMovies);
+  // useEffect(() => {
+  //   // console.log("inisde use effect");
 
-    console.log("inside use effect in main");
-    const getfetch = async () => {
-      try {
-        let {
-          data: { results, total_pages },
-        } = await axios({
-          method: "get",
-          url: api_url,
-          params: {
-            api_key: "e3ef60114f3455d412ea55db83f798b2",
-            page: page,
-          },
-        });
-        // console.log("hiii in try");
-        // console.log(results);
-        setPopMovies(results), setTotalPages(total_pages);
-        // setTimeout(() => {
-        //   setLoading(false);
-        // }, 5000);
-        setLoading(false);
-      } catch ({ message }) {
-        setError(message);
-        setLoading(false);
-        // console.log("hiii in catch");
-      }
-    };
-    getfetch();
-  }, [page]);
+  //   console.log("inside use effect in main");
+  //   const getfetch = async () => {
+  //     try {
+  //       let {
+  //         data: { results, total_pages },
+  //       } = await axios({
+  //         method: "get",
+  //         url: api_url,
+  //         params: {
+  //           api_key: "e3ef60114f3455d412ea55db83f798b2",
+  //           page: page,
+  //         },
+  //       });
+  //       // console.log("hiii in try");
+  //       // console.log(results);
+  //       setPopMovies(results), setTotalPages(total_pages);
+  //       // setTimeout(() => {
+  //       //   setLoading(false);
+  //       // }, 5000);
+  //       setLoading(false);
+  //     } catch ({ message }) {
+  //       setError(message);
+  //       setLoading(false);
+  //       // console.log("hiii in catch");
+  //     }
+  //   };
+  //   getfetch();
+  // }, [page]);
+
+  // below is fetching using .then method
 
   // useEffect(() => {
   //   axios({
@@ -80,13 +88,13 @@ function Main() {
         {!loading && !error && (
           <>
             <div className="gallery">
-              {popMovies?.map((movie) => (
+              {results?.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
             </div>
             <Pagination
               setPage={setPage}
-              totalPages={totalPages}
+              totalPages={total_pages}
               page={page}
             ></Pagination>
           </>
