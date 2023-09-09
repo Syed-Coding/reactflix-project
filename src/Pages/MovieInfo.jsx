@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
-import { useFetch } from "../../Hooks/useFetch";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Components/Wrapper";
+import { useFetch } from "../Hooks/useFetch";
 
 export const MovieInfo = () => {
   let { id } = useParams();

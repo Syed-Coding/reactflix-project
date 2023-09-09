@@ -1,14 +1,14 @@
 import { useState } from "react";
-import MovieCard from "../MovieCard";
-import Wrapper from "../Wrapper";
+import MovieCard from "../Components/MovieCard";
+import Wrapper from "../Components/Wrapper";
 // import { popularMovies } from "../Utils/data"; // local data dummy
-import Pagination from "../Pagination";
-import Loader from "../Loader";
-import ErrorMessage from "../ErrorMessage";
-import Slider from "../Slider";
-import { useFetch } from "../../Hooks/useFetch";
-import { Title } from "../Title";
-import { title } from "../../Utils/data";
+import Pagination from "../Components/Pagination";
+import Loader from "../Components/Loader";
+import ErrorMessage from "../Components/ErrorMessage";
+import Slider from "../Components/Slider";
+import { useFetch } from "../Hooks/useFetch";
+import { Title } from "../Components/Title";
+import { title } from "../Utils/data";
 function Home({ url }) {
   const [page, setPage] = useState(1);
   const [data, loading, error] = useFetch(url, {

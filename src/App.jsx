@@ -2,13 +2,13 @@ import { Main } from "./Components/Main";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Components/Pages/Home";
-import { Favourites } from "./Components/Pages/Favourites";
-import { MovieInfo } from "./Components/Pages/MovieInfo";
-import { UpcomingMovies } from "./Components/Pages/UpcomingMovies";
-import { PopularMovies } from "./Components/Pages/PopularMovies";
-import { PopularTvshows } from "./Components/Pages/PopularTvshows";
-import { AiringToday } from "./Components/Pages/AiringToday";
+import Home from "./Pages/Home";
+import { Favourites } from "./Pages/Favourites";
+import { MovieInfo } from "./Pages/MovieInfo";
+import { UpcomingMovies } from "./Pages/UpcomingMovies";
+import { PopularMovies } from "./Pages/PopularMovies";
+import { PopularTvshows } from "./Pages/PopularTvshows";
+import { AiringToday } from "./Pages/AiringToday";
 function App() {
   return (
     <div className="App">
