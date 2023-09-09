@@ -1,8 +1,8 @@
 @import "reset";
 @import "colors";
 @import "mixins";
+// App global styling
 
-// App styles
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background: $stone900;
@@ -21,6 +21,7 @@ a:hover {
   min-height: 100vh;
   @include flexbox(column, stretch, space-between, 0);
 }
+
 header {
   padding: 30px 0px;
   background: $stoneBlack;
@@ -32,6 +33,9 @@ main {
 footer {
   padding: 30px 0px;
   background: $stoneBlack;
+  p {
+    font-size: 14px;
+  }
 }
 .wrapper {
   width: 100%;
@@ -43,13 +47,37 @@ footer {
   outline: none;
 }
 
-//App Header
+//App header
 .appHeader {
   @include flexbox(row, center, space-between, 20px);
   .headerLeft {
     @include flexbox(row, stretch, space-between, 20px);
     flex: 1;
+    .favCount {
+      height: 100%;
+      font-weight: 700;
+      position: relative;
+      @include flexbox(row, center, space-between, 5px);
+      &:hover {
+        opacity: 0.8;
+      }
+      .count {
+        position: absolute;
+        right: 0;
+        top: 0px;
+        font-size: 12px;
+        padding: 0px 5px;
+        background: $amber;
+        color: $stone800;
+        @include rounded;
+      }
+    }
   }
+}
+
+// App footer
+.appFooter {
+  text-align: center;
 }
 
 //searchBox
@@ -66,6 +94,48 @@ footer {
     background: transparent;
     width: 100%;
   }
+  .resultBox {
+    position: absolute;
+    z-index: 100;
+    top: 90%;
+    right: 0;
+    width: 100%;
+    max-height: 400px;
+    background: $stone700;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-radius: 0px 0px 5px 5px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .loading {
+      padding: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        padding: 10px 10px;
+        border-bottom: 1px solid $stone800;
+
+        &:hover {
+          background: $stone800;
+        }
+        @include flexbox(row, center, flex-start, 10px);
+        img {
+          max-width: 48px;
+        }
+        h4 {
+          color: $stone100;
+          line-height: 1.2;
+          font-size: 16px;
+        }
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
 
 // section title
@@ -76,7 +146,9 @@ footer {
   font-size: 20px;
   color: $amber;
 }
-
+.sectionTitle:hover {
+  color: red;
+}
 //Gallery
 .gallery {
   display: grid;
@@ -87,7 +159,23 @@ footer {
   border-top: 1px solid $stone700;
 }
 
-//Movie Card
+//Pagination
+.pagination {
+  margin: 30px 0px;
+  @include flexbox(row, center, space-between, 10px);
+  button {
+    background: $amber;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+}
+
+//Moviecard
 .movieCard {
   .moviePoster {
     @include rounded;
@@ -117,27 +205,9 @@ footer {
   }
 }
 
-.pagination {
-  @include flexbox(row, center, space-between, 10px);
-  margin: 30px 0px;
-  button {
-    background: transparent;
-    border: 1px solid $stone700;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: $amber;
-    font-weight: 700;
-    cursor: pointer;
-    &:hover {
-      border-color: $amber;
-    }
-    &:disabled {
-      opacity: 0.4;
-    }
-  }
-  p {
-    color: $amber;
-  }
+//Favorite Button
+.favoriteButton {
+  color: $amber;
 }
 
 //Movie Slider
@@ -190,18 +260,107 @@ footer {
   }
 }
 
-.loader {
-  display: flex;
-  padding: 2em 0;
-  justify-content: center;
+//Movie Page
+
+.moviePage {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: rgb(49, 47, 56);
+    background: linear-gradient(
+      0deg,
+      rgba(49, 47, 56, 1) 50%,
+      rgba(49, 47, 56, 0.5) 95%
+    );
+  }
+  .movieContent {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 30px;
+    padding-top: 33vh;
+    .moviePoster {
+      img {
+        @include rounded;
+      }
+    }
+    .movieInfo {
+      padding: 30px 0px;
+      .movieTitle {
+        padding-bottom: 30px;
+        border-bottom: 1px solid $stone700;
+        h1 {
+          @include fluidType;
+          color: $stone100;
+          line-height: 1;
+          margin-bottom: 10px;
+        }
+        h3 {
+          font-weight: normal;
+        }
+      }
+      .moviePlot {
+        padding: 30px 0px;
+      }
+      .movieDetails {
+        .movieDetailsItem {
+          display: grid;
+          grid-template-columns: 1fr 4fr;
+          border-bottom: 1px solid $stone700;
+          padding: 10px 0px;
+          align-items: center;
+          grid-gap: 10px;
+          h3 {
+            color: $stone100;
+          }
+          span {
+            margin: 0px 10px 0px 0px;
+          }
+        }
+      }
+    }
+  }
+}
+.notFound {
+  padding: 50px 0px;
+  text-align: center;
+  h1 {
+    margin-bottom: 20px;
+    color: $stone100;
+    @include fluidType;
+  }
+  button {
+    background: $amber;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
-.errorMessage {
-  border: 1px solid crimson;
-  background: rgba(crimson, 0.1);
-  padding: 1em 0;
-  margin: 1em auto;
-  text-align: center;
-  @include rounded;
-  color: white;
+@media screen and (max-width: 600px) {
+  .appHeader {
+    @include flexbox(column, stretch, center, 10px);
+    .siteHeader {
+      @include flexbox(row, stretch, space-between, 20px);
+    }
+  }
+  .searchBox {
+    max-width: 600px;
+  }
+  .moviePage .movieContent {
+    padding-top: 30px;
+    grid-template-columns: 1fr;
+  }
+}
+.sectionHeading {
+  display: flex;
+  justify-content: space-between;
 }

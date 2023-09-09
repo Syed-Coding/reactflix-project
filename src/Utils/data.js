@@ -91,3 +91,10 @@ export const popularMovies = [
     poster_path: "poster015.jpeg",
   },
 ];
+
+export const title = [
+  "Popular-Movies",
+  "Upcoming-Movies",
+  "Popular-TVShows",
+  "Airing-today",
+];

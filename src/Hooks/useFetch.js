@@ -2,7 +2,8 @@
 //repeat ayi verunnath nammak custom hooks use chyyam but name start with use
 import axios from "axios";
 import { useState, useEffect } from "react";
-export const useFetch = (url, customParams = {}) => {
+export const useFetch = (url = "movie/popular", customParams = {}) => {
+  console.log(url);
   const [data, setData] = useState({}); // here data contains totalpages and results
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
