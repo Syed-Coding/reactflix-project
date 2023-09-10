@@ -35,7 +35,7 @@ function Slider() {
       <Splide options={splideOptions} extensions={{ AutoScroll }}>
         {results?.map(({ backdrop_path, title, id }) => (
           <SplideSlide key={id}>
-            <Link to={`movie/${id}`}>
+            <Link to={`/movie/${id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w1280/${backdrop_path}`}
                 alt={title}
