@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-export const Title = ({ name }) => {
+export const Title = ({ ele }) => {
+  // console.log(props);
   return (
-    <Link to={`/${name}`}>
-      <h2 className="sectionTitle"> {name}</h2>
-    </Link>
+    <NavLink to={`/collections/${ele.url}`}>
+      <h2 className="sectionTitle"> {ele.title}</h2>
+    </NavLink>
   );
 };

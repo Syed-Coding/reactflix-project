@@ -9,10 +9,11 @@ import Slider from "../Components/Slider";
 import { useFetch } from "../Hooks/useFetch";
 import { Title } from "../Components/Title";
 import { title } from "../Utils/data";
+import { useGlobalContext } from "../Context/Context";
 function Home({ url }) {
-  const [page, setPage] = useState(1);
+  const { dispatch, state } = useGlobalContext();
   const [data, loading, error] = useFetch(url, {
-    page: page,
+    page: state.page,
   }); // custom hooks for reusing and destructing the return value
   // console.log("data in main", data);
   const { results, total_pages } = data;
@@ -87,8 +88,8 @@ function Home({ url }) {
         {loading && <Loader></Loader>}
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <div className="sectionHeading">
-          {title.map((name) => (
-            <Title name={name} />
+          {title.map((ele) => (
+            <Title ele={ele} />
           ))}
         </div>
         {/* {console.log("even loader is true it wll also check another line")} */}
@@ -105,9 +106,9 @@ function Home({ url }) {
               })} */}
             </div>
             <Pagination
-              setPage={setPage}
+              dispatch={dispatch}
+              page={state.page}
               totalPages={total_pages}
-              page={page}
             ></Pagination>
           </>
         )}

@@ -1,10 +1,10 @@
-function Pagination({ setPage, totalPages, page }) {
+function Pagination({ totalPages, dispatch, page }) {
   const handleNextPage = () => {
-    setPage((previous) => previous + 1);
+    dispatch({ type: "Increase Page" });
   };
 
   const handlePreviousPage = () => {
-    setPage((previous) => previous - 1);
+    dispatch({ type: "Decrease Page" });
   };
   return (
     <div className="pagination">

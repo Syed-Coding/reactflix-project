@@ -22,7 +22,7 @@ export const useFetch = (url = "movie/popular", customParams = {}) => {
     },
   };
   console.log("custom parmas", customParams);
-  const { page } = customParams; // destructing for page dpenedency array
+  const { page, query } = customParams; // destructing for page dpenedency array
 
   useEffect(() => {
     console.log("inside useEffect");
@@ -37,7 +37,7 @@ export const useFetch = (url = "movie/popular", customParams = {}) => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, query, url]);
 
   return [data, loading, error];
 };

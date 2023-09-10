@@ -5,10 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import { Favourites } from "./Pages/Favourites";
 import { MovieInfo } from "./Pages/MovieInfo";
-import { UpcomingMovies } from "./Pages/UpcomingMovies";
-import { PopularMovies } from "./Pages/PopularMovies";
-import { PopularTvshows } from "./Pages/PopularTvshows";
-import { AiringToday } from "./Pages/AiringToday";
+import Collections from "./Components/Collections";
+
 function App() {
   return (
     <div className="App">
@@ -16,12 +14,14 @@ function App() {
       <Main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Upcoming-Movies" element={<UpcomingMovies />} />
-          <Route path="/Popular-TVShows" element={<PopularTvshows />} />
-          <Route path="/Airing-today" element={<AiringToday />} />
-          <Route path="/Popular-Movies" element={<PopularMovies />} />
+          {/* <Route
+            path="/Upcoming-Movies"
+            element={<Home url="movie/upcoming"></Home>}
+          />
+          <Route path="/Popular-Movies" element={<Home url="movie/popular"></Home> /> */}
           <Route path="/favorites" element={<Favourites />} />
-          <Route path="movie/:id" element={<MovieInfo />} />
+          <Route path="/movie/:id" element={<MovieInfo />} />
+          <Route path="/collections/*" element={<Collections />} />
         </Routes>
       </Main>
       <Footer></Footer>

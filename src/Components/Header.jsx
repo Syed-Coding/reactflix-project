@@ -1,7 +1,11 @@
 import Wrapper from "./Wrapper";
 import Logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
+import { SearchBox } from "./SearchBox";
+import { useGlobalContext } from "../Context/Context";
+
 function Header() {
+  const { state } = useGlobalContext();
   return (
     <header>
       <Wrapper>
@@ -13,14 +17,12 @@ function Header() {
 
             <Link to="/favorites">
               <div className="favCount">
-                <span className="count"> 0 </span>
+                <span className="count"> {state.favorites.length}</span>
                 Favorites
               </div>
             </Link>
           </div>
-          <div className="searchBox">
-            <input className="searchField" type="search" />
-          </div>
+          <SearchBox></SearchBox>
         </div>
       </Wrapper>
     </header>

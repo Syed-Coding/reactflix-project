@@ -364,3 +364,7 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+
+a.active .sectionTitle {
+  color: green;
+}

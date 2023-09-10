@@ -1,4 +1,5 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css";
 import splideOptions from "../Utils/splideoptions";
 import { useFetch } from "../Hooks/useFetch";
@@ -30,7 +31,7 @@ function Slider() {
   return (
     <div className="movieSlider">
       {console.log("rendering started in slider")}
-      <Splide options={splideOptions}>
+      <Splide options={splideOptions} extensions={{ AutoScroll }}>
         {results?.map(({ backdrop_path, title, id }) => (
           <SplideSlide key={id}>
             <img

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FavioriteButton } from "./FavioriteButton";
 
 function MovieCard({ movie }) {
   const { id, title, vote_average, poster_path, original_name } = movie;
@@ -8,7 +9,7 @@ function MovieCard({ movie }) {
 
   return (
     <div className="movieCard">
-      <Link to={`movie/${id}`}>
+      <Link to={`/movie/${id}`}>
         <img
           className="moviePoster"
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
@@ -21,7 +22,7 @@ function MovieCard({ movie }) {
           <h2 className="movieCardTitle">{title || original_name}</h2>
           <p className="movieCardRating">{vote_average}</p>
         </div>
-        <div className="favButton">#</div>
+        <FavioriteButton movie={movie}></FavioriteButton>
       </div>
     </div>
   );
