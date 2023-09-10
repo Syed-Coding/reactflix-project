@@ -7,7 +7,7 @@ const AppContext = createContext();
 export const useGlobalContext = () => useContext(AppContext);
 export const AppContextWrapper = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
+  // console.log(state);
   const contextValue = { state, dispatch };
   return (
     <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>

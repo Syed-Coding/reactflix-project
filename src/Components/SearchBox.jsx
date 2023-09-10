@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export const SearchBox = () => {
   const [query, setQuery] = useState("");
   const [data] = useFetch("search/movie", { query });
-  console.log("data in hdjshjdhsdaf", data);
   return (
     <div className="searchBox">
       <input

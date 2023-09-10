@@ -8,7 +8,7 @@ function Slider() {
   // console.log("latest is ", latestMovies);
 
   const [{ results }] = useFetch("movie/now_playing");
-  console.log("data in slider", results);
+  // console.log("data in slider", results);
 
   // useEffect(() => {
   //   console.log("inside use effect in slider");
@@ -30,7 +30,7 @@ function Slider() {
 
   return (
     <div className="movieSlider">
-      {console.log("rendering started in slider")}
+      {/* {console.log("rendering started in slider")} */}
       <Splide options={splideOptions} extensions={{ AutoScroll }}>
         {results?.map(({ backdrop_path, title, id }) => (
           <SplideSlide key={id}>
@@ -44,7 +44,7 @@ function Slider() {
           </SplideSlide>
         ))}
       </Splide>
-      {console.log("rendering stopped in slider")}
+      {/* {console.log("rendering stopped in slider")} */}
     </div>
   );
 }

@@ -4,11 +4,11 @@ import heartFill from "../assets/heart-filled.svg";
 import heartlined from "../assets/heart-lined.svg";
 export const FavioriteButton = ({ movie }) => {
   const { state, dispatch } = useGlobalContext();
-  console.log(state, dispatch);
+  // console.log(state, dispatch);
 
   const favorited = state.favorites.some((ele) => ele.id === movie.id);
 
-  console.log(favorited);
+  // console.log(favorited);
   const handlefavorite = () => {
     favorited
       ? dispatch({ type: "Remove Favorite", payload: movie.id })
@@ -17,9 +17,9 @@ export const FavioriteButton = ({ movie }) => {
   return (
     <div className="favButton" onClick={handlefavorite}>
       {favorited ? (
-        <img src={heartFill} alt="" srcset="" />
+        <img src={heartFill} alt="" />
       ) : (
-        <img src={heartlined} alt="" srcset="" />
+        <img src={heartlined} alt="" />
       )}
     </div>
   );

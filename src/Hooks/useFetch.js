@@ -3,11 +3,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 export const useFetch = (url = "movie/popular", customParams = {}) => {
-  console.log(url);
+  // console.log(url);
   const [data, setData] = useState({}); // here data contains totalpages and results
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log("inside usefetch");
+  // console.log("inside usefetch");
 
   const options = {
     method: "get",
@@ -21,11 +21,11 @@ export const useFetch = (url = "movie/popular", customParams = {}) => {
       // console.log(m)
     },
   };
-  console.log("custom parmas", customParams);
+  // console.log("custom parmas", customParams);
   const { page, query } = customParams; // destructing for page dpenedency array
 
   useEffect(() => {
-    console.log("inside useEffect");
+    // console.log("inside useEffect");
     const fetchData = async () => {
       try {
         let { data } = await axios(options);

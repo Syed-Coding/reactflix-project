@@ -12,7 +12,7 @@ import Slider from "./Slider";
 import { useGlobalContext } from "../Context/Context";
 function Collections() {
   const { "*": url } = useParams();
-  console.log(url);
+  // console.log(url);
 
   const { dispatch, state } = useGlobalContext();
   const [data, loading, error] = useFetch(url, {

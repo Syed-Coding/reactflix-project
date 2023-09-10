@@ -17,8 +17,8 @@ function Home({ url }) {
   }); // custom hooks for reusing and destructing the return value
   // console.log("data in main", data);
   const { results, total_pages } = data;
-  console.log("results", results);
-  console.log("totalpages", total_pages);
+  // console.log("results", results);
+  // console.log("totalpages", total_pages);
 
   // const [popMovies, setPopMovies] = useState([]);
   // const [totalPages, setTotalPages] = useState(null);
@@ -80,7 +80,7 @@ function Home({ url }) {
 
   return (
     <main>
-      {console.log("rendering started in main")}
+      {/* {console.log("rendering started in main")} */}
 
       <Slider></Slider>
 
@@ -89,7 +89,7 @@ function Home({ url }) {
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <div className="sectionHeading">
           {title.map((ele) => (
-            <Title ele={ele} />
+            <Title ele={ele} key={ele.title} />
           ))}
         </div>
         {/* {console.log("even loader is true it wll also check another line")} */}
@@ -113,7 +113,7 @@ function Home({ url }) {
           </>
         )}
       </Wrapper>
-      {console.log("rendering stopped in main")}
+      {/* {console.log("rendering stopped in main")} */}
     </main>
   );
 }
