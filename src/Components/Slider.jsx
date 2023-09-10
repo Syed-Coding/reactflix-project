@@ -3,6 +3,7 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css";
 import splideOptions from "../Utils/splideoptions";
 import { useFetch } from "../Hooks/useFetch";
+import { Link } from "react-router-dom";
 function Slider() {
   // const [latestMovies, setLatestMovies] = useState([]);
   // console.log("latest is ", latestMovies);
@@ -34,10 +35,13 @@ function Slider() {
       <Splide options={splideOptions} extensions={{ AutoScroll }}>
         {results?.map(({ backdrop_path, title, id }) => (
           <SplideSlide key={id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w1280/${backdrop_path}`}
-              alt={title}
-            />
+            <Link to={`movie/${id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w1280/${backdrop_path}`}
+                alt={title}
+              />
+            </Link>
+
             <div className="slideCaption">
               <h2>{title}</h2>
             </div>
