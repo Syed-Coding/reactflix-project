@@ -29,7 +29,7 @@ function Collections() {
         {/* {console.log("even loader is true it wll also check another line")} */}
         <div className="sectionHeading">
           {title.map((ele) => (
-            <Title ele={ele} />
+            <Title ele={ele} key={ele.id} />
           ))}
         </div>
         {!loading && !error && (
@@ -52,7 +52,7 @@ function Collections() {
           </>
         )}
       </Wrapper>
-      {console.log("rendering stopped in main")}
+      {/* {console.log("rendering stopped in main")} */}
     </main>
   );
 }

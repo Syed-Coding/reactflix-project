@@ -8,6 +8,7 @@ export const MovieInfo = () => {
 
   const [data] = useFetch(`movie/${id}`);
   // console.log("rendering movie info");
+
   const backdrop = {
     backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${data?.backdrop_path})`,
   };

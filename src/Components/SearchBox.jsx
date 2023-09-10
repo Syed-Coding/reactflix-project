@@ -17,7 +17,7 @@ export const SearchBox = () => {
         <ul>
           {data?.results?.map((res) => {
             return (
-              <Link to={`/movie/${res.id}`}>
+              <Link to={`/movie/${res.id}`} key={res.id}>
                 <li>
                   <img
                     src={
@@ -30,7 +30,7 @@ export const SearchBox = () => {
                   />
                   <div>
                     <h4>{res.title}</h4>
-                    <p3>{res.release_date.slice(0, 4)}</p3>
+                    <p>{res.release_date.slice(0, 4)}</p>
                   </div>
                 </li>
               </Link>

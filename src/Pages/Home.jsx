@@ -89,7 +89,7 @@ function Home({ url }) {
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <div className="sectionHeading">
           {title.map((ele) => (
-            <Title ele={ele} key={ele.title} />
+            <Title ele={ele} key={ele.id} />
           ))}
         </div>
         {/* {console.log("even loader is true it wll also check another line")} */}
