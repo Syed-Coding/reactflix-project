@@ -40,11 +40,10 @@ function Slider() {
                 src={`https://image.tmdb.org/t/p/w1280/${backdrop_path}`}
                 alt={title}
               />
+              <div className="slideCaption">
+                <h2>{title}</h2>
+              </div>
             </Link>
-
-            <div className="slideCaption">
-              <h2>{title}</h2>
-            </div>
           </SplideSlide>
         ))}
       </Splide>
