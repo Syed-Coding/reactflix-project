@@ -93,7 +93,7 @@ export const popularMovies = [
 ];
 
 export const title = [
-  { id: 1, title: "Popular-Movies", url: "movie/popular" },
-  { id: 2, title: "Upcoming-Movies", url: "movie/upcoming" },
-  { id: 3, title: "Top-Rated", url: "movie/top_rated" },
+  { id: 1, title: "Popular-Movies", url: "popular" },
+  { id: 2, title: "Upcoming-Movies", url: "upcoming" },
+  { id: 3, title: "Top-Rated", url: "top_rated" },
 ];

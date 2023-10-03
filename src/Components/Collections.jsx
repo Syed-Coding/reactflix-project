@@ -11,11 +11,11 @@ import { useParams } from "react-router-dom";
 import Slider from "./Slider";
 import { useGlobalContext } from "../Context/Context";
 function Collections() {
-  const { "*": url } = useParams();
-  // console.log(url);
+  const { url } = useParams();
+  console.log(url);
 
   const { dispatch, state } = useGlobalContext();
-  const [data, loading, error] = useFetch(url, {
+  const [data, loading, error] = useFetch(`movie/${url}`, {
     page: state.page,
   }); // custom hooks for reusing and destructing the return value
   // console.log("data in main", data);

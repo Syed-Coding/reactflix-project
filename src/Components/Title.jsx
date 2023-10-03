@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export const Title = ({ ele }) => {
   // console.log(props);
   return (
-    <NavLink to={`/collections/${ele.url}`}>
+    <NavLink to={`/collections/movie/${ele.url}`}>
       <h2 className="sectionTitle"> {ele.title}</h2>
     </NavLink>
   );

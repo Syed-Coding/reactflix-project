@@ -21,7 +21,8 @@ function App() {
           <Route path="/Popular-Movies" element={<Home url="movie/popular"></Home> /> */}
           <Route path="/favorites" element={<Favourites />} />
           <Route path="/movie/:id" element={<MovieInfo />} />
-          <Route path="/collections/*" element={<Collections />} />
+          {/* <Route path="/collections/*" element={<Collections />} /> */}
+          <Route path="/collections/movie/:url" element={<Collections />} />
         </Routes>
       </Main>
       <Footer></Footer>
